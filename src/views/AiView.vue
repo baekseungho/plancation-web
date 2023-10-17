@@ -8,26 +8,28 @@
         <HeaderBar class="rightHeader" />
         <!-- 메인 화면 -->
         <div class="mainScreen">
-
+          <AiIntro v-if="currentPage === 'AiIntro'" @changePage="handleChangePage"></AiIntro>
+          <AiDetail></AiDetail>
         </div>
       </div>
     </div>
   </div>
 </template>
-<script lang="ts">
-import SideBar from "../components/SideBar.vue";
+<script setup lang="ts">
+import SideBar from '../components/SideBar.vue'
 import HeaderBar from '../components/HeaderBar.vue'
+import AiIntro from '../components/AiIntro.vue'
+import AiDetail from '../components/AiDetail.vue'
+import { ref } from 'vue'
 
-export default {
-  components: {
-    SideBar,
-    HeaderBar,
-  }
+const currentPage = ref('AiIntro')
+
+const handleChangePage = (newPage) => {
+  currentPage.value = newPage
 }
 </script>
 <style lang="scss">
-@import '../assets/scss/pages/ai.css'
-// .ai {
+@import '../assets/scss/pages/ai.css'; // .ai {
 //   display: flex;
 // }
 </style>
